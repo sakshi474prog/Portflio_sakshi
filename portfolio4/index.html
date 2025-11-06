@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sakshi Shekhar — Front-End Developer & UI/UX Designer</title>
+    <meta name="description"
+        content="Sakshi Shekhar — Front-End Developer & UI/UX Designer. I craft visually appealing, functional, and user-friendly web experiences." />
+    <meta name="author" content="Sakshi Shekhar" />
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:title" content="Sakshi Shekhar — Front-End Developer & UI/UX Designer" />
+    <meta property="og:description"
+        content="I craft visually appealing, functional, and user-friendly web experiences." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sakshishekhar.in" />
+    <meta property="og:image" content="/social-preview.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sakshi Shekhar — Front-End Developer & UI/UX Designer" />
+    <meta name="twitter:description"
+        content="I craft visually appealing, functional, and user-friendly web experiences." />
+
+    <!-- Favicon (placeholder) -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CDN (Play) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind config
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6C5CE7',
+                        accent: '#00BFA6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                        display: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* small custom utilities */
+        .glass {
+            backdrop-filter: blur(6px) saturate(120%);
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .dark .glass {
+            background-color: rgba(17, 24, 39, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 font-sans">
+
+    <!-- Sticky Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur-md glass border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+            <a href="#home" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-white font-bold">SS
+                </div>
+                <span class="hidden sm:inline-block font-semibold">Sakshi Shekhar</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm">
+                <a href="#projects" class="hover:text-primary transition">Projects</a>
+                <a href="#skills" class="hover:text-primary transition">Skills</a>
+                <a href="#about" class="hover:text-primary transition">About</a>
+                <a href="#blog" class="hover:text-primary transition">Blog</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="themeToggle" aria-label="Toggle dark mode"
+                    class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                    <!-- icon replaced by JS -->
+                    <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path
+                            d="M10 2a.75.75 0 01.75.75V4a.75.75 0 01-1.5 0V2.75A.75.75 0 0110 2zM10 16a.75.75 0 01.75.75V18a.75.75 0 01-1.5 0v-1.25A.75.75 0 0110 16zM4.22 4.22a.75.75 0 011.06 0l.887.887a.75.75 0 11-1.06 1.06L4.22 5.28a.75.75 0 010-1.06zM14.83 14.83a.75.75 0 011.06 0l.887.887a.75.75 0 11-1.06 1.06l-.887-.887a.75.75 0 010-1.06zM2 10a.75.75 0 01.75-.75H4a.75.75 0 010 1.5H2.75A.75.75 0 012 10zM16 10a.75.75 0 01.75-.75H18a.75.75 0 010 1.5h-1.25A.75.75 0 0116 10zM4.22 15.78a.75.75 0 010-1.06l.887-.887a.75.75 0 111.06 1.06l-.887.887a.75.75 0 01-1.06 0zM14.83 5.17a.75.75 0 010-1.06l.887-.887a.75.75 0 111.06 1.06l-.887.887a.75.75 0 01-1.06 0z" />
+                    </svg>
+                </button>
+
+                <a href="#contact"
+                    class="hidden md:inline-block px-4 py-2 rounded-md bg-primary text-white text-sm hover:brightness-90 transition">Contact</a>
+
+                <!-- Mobile menu toggle -->
+                <button id="mobileNavBtn"
+                    class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile nav panel -->
+        <div id="mobileNav" class="hidden md:hidden border-t border-gray-100 dark:border-gray-800">
+            <div class="px-6 py-4 flex flex-col gap-3">
+                <a href="#projects" class="py-2">Projects</a>
+                <a href="#skills" class="py-2">Skills</a>
+                <a href="#about" class="py-2">About</a>
+                <a href="#blog" class="py-2">Blog</a>
+                <a href="#contact" class="py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="max-w-6xl mx-auto px-6 py-12">
+
+        <!-- Hero -->
+        <section id="home" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-12">
+            <div class="space-y-6">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-display leading-tight">Hi, I’m <span
+                        class="text-primary">Sakshi</span> — a Front-End Developer &amp; UI/UX Designer.</h1>
+                <p class="text-lg max-w-xl">I craft visually appealing, functional, and user-friendly web experiences.
+                </p>
+                <div class="flex items-center gap-4">
+                    <a href="#projects"
+                        class="px-5 py-3 rounded-md bg-primary text-white font-medium hover:scale-[0.995] transition shadow">View
+                        My Work</a>
+                    <a href="#contact"
+                        class="px-5 py-3 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">Contact
+                        Me</a>
+                </div>
+
+                <div class="mt-6 text-sm text-gray-600 dark:text-gray-300">
+                    <strong>Currently:</strong> B.Tech in Computer Science &amp; Engineering — graduating 2027.
+                </div>
+
+                <div class="flex gap-3 mt-6">
+                    <!-- social links -->
+                    <a href="https://www.linkedin.com/in/sakshi-shekhar-5a7983271/" target="_blank" rel="noreferrer"
+                        class="text-sm hover:text-primary">LinkedIn</a>
+                    <a href="https://github.com/sakshi474prog" target="_blank" rel="noreferrer"
+                        class="text-sm hover:text-primary">GitHub</a>
+                </div>
+            </div>
+
+            <div class="mx-auto">
+                <!-- avatar / photo -->
+                <div
+                    class="w-64 h-64 rounded-2xl overflow-hidden shadow-lg mx-auto ring-4 ring-white dark:ring-gray-900">
+                    <img src="assets/Screenshot 2025-11-02 010121.png" alt="Sakshi Shekhar — avatar"
+                        class="w-full h-full object-cover" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section id="projects" class="py-12">
+            <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-semibold">Featured Projects</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Selected work — responsive, design-focused, and
+                    accessible.</p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <article
+                    class="group rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-lg transition">
+                    <div
+                        class="h-44 bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center">
+                        <img src="assets/Screenshot 2025-08-14 220707.png" alt="WellNest"
+                            class="object-cover w-full h-full" />
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold">WellNest — Hackathon Project</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">A wellness-focused web platform
+                            promoting mental and physical health. Contributed to UI/UX and responsive front-end.</p>
+                        <ul class="text-xs mt-3 space-y-1 text-gray-500 dark:text-gray-400">
+                            <li><strong>Role:</strong> UI/UX, Front-end</li>
+                            <li><strong>Tools:</strong> HTML, CSS, JavaScript, Figma</li>
+                            <li><strong>Highlights:</strong> Responsive design, accessibility focus, quick MVP build.
+                            </li>
+                        </ul>
+                        <div class="mt-4 flex gap-3">
+                            <a href="https://github.com/giriraj-roy-7723/WellNest" target="_blank" rel="noreferrer"
+                                class="text-sm px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">GitHub</a>
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md bg-accent text-white hover:brightness-95 transition">Live
+                                Demo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article
+                    class="group rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-lg transition">
+                    <div
+                        class="h-44 bg-gradient-to-r from-green-100 to-teal-100 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center">
+                        <img src="assets/Screenshot 2025-11-02 004202.png" alt="Smart Tourist Safety"
+                            class="object-cover w-full h-full" />
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold">Smart Tourist Safety App</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">A smart tourism safety platform
+                            providing emergency alerts, nearest help centers, and travel safety data.</p>
+                        <ul class="text-xs mt-3 space-y-1 text-gray-500 dark:text-gray-400">
+                            <li><strong>Role:</strong> Front-end Engineer</li>
+                            <li><strong>Tools:</strong> React, TailwindCSS, Google Maps API</li>
+                            <li><strong>Highlights:</strong> Real-time alerts, maps integration, responsive UI.</li>
+                        </ul>
+                        <div class="mt-4 flex gap-3">
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">GitHub</a>
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md bg-accent text-white hover:brightness-95 transition">Live
+                                Demo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article
+                    class="group rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-lg transition">
+                    <div
+                        class="h-44 bg-gradient-to-r from-yellow-100 to-orange-100 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center">
+                        <img src="assets/Screenshot 2025-11-02 005007.png" alt="Portfolio v1"
+                            class="object-cover w-full h-full" />
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold">Portfolio Website (v1)</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">My first personal website showcasing
+                            design and development work in a clean, minimal format.</p>
+                        <ul class="text-xs mt-3 space-y-1 text-gray-500 dark:text-gray-400">
+                            <li><strong>Role:</strong> Designer & Developer</li>
+                            <li><strong>Tools:</strong> HTML, CSS, JavaScript</li>
+                            <li><strong>Highlights:</strong> Minimal UI, performance-first, mobile friendly.</li>
+                        </ul>
+                        <div class="mt-4 flex gap-3">
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">GitHub</a>
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md bg-accent text-white hover:brightness-95 transition">Live
+                                Demo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article
+                    class="group rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-lg transition">
+                    <div
+                        class="h-44 bg-gradient-to-r from-pink-100 to-rose-100 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center">
+                        <img src="assets/Screenshot 2025-11-02 005644.png" alt="Creative Agency"
+                            class="object-cover w-full h-full" />
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-semibold">Creative Agency Landing Page</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">A landing page for a digital agency,
+                            focusing on bold typography and modern layout.</p>
+                        <ul class="text-xs mt-3 space-y-1 text-gray-500 dark:text-gray-400">
+                            <li><strong>Role:</strong> Front-end</li>
+                            <li><strong>Tools:</strong> HTML, CSS, JavaScript</li>
+                            <li><strong>Highlights:</strong> Hero-centric layout, CTA optimization.</li>
+                        </ul>
+                        <div class="mt-4 flex gap-3">
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">GitHub</a>
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md bg-accent text-white hover:brightness-95 transition">Live
+                                Demo</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5 (Case Studies) -->
+                <!-- <article
+                    class="col-span-1 md:col-span-2 lg:col-span-3 rounded-xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-sm hover:shadow-lg transition">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">UI/UX Case Studies</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-3">Designed prototypes for wellness,
+                            e-commerce, and travel apps using Figma and Canva. Emphasis on design process, user flow,
+                            and brand consistency.</p>
+                        <div class="mt-4 flex gap-3 flex-wrap">
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">Case
+                                study: Wellness App</a>
+                            <a href="#"
+                                class="text-sm px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">Case
+                                study: E‑commerce</a>
+                        </div>
+                    </div>
+                </article> -->
+<br>
+                <section id="case-studies" class="py-20 bg-gray-50 dark:bg-gray-900">
+                    <div class="max-w-4xl mx-auto px-6 text-center">
+                        <h2 class="text-3xl font-bold mb-10">Case Studies</h2>
+
+                        <!-- Case Study Buttons -->
+                        <div class="space-y-6">
+                            <button onclick="openModal('wellness')" class="text-blue-600 hover:underline text-lg">
+                                Case Study: Wellness App
+                            </button><br>
+                            <button onclick="openModal('ecommerce')" class="text-blue-600 hover:underline text-lg">
+                                Case Study: E-commerce Website
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Wellness Modal -->
+                <div id="modal-wellness"
+                    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-11/12 md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-4">Wellness App Case Study</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            The Wellness App promotes mindfulness and daily health tracking.
+                            Built with <strong>HTML, CSS, and JavaScript</strong>, it offers users guided sessions and
+                            progress analytics.
+                        </p>
+                        <ul class="list-disc text-left ml-6 text-gray-600 dark:text-gray-400">
+                            <li>Focus on UI/UX consistency and calm color palette.</li>
+                            <li>Added interactive breathing exercises.</li>
+                            <li>Responsive design for both desktop and mobile.</li>
+                        </ul>
+                        <button onclick="closeModal('wellness')"
+                            class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+                <!-- E-commerce Modal -->
+                <div id="modal-ecommerce"
+                    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-11/12 md:w-1/2">
+                        <h3 class="text-2xl font-bold mb-4">E-commerce Website Case Study</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                            This E-commerce site was built for seamless online shopping with
+                            <strong>HTML, CSS, and JavaScript</strong>, focusing on speed and smooth checkout flow.
+                        </p>
+                        <ul class="list-disc text-left ml-6 text-gray-600 dark:text-gray-400">
+                            <li>Product filtering and cart functionality.</li>
+                            <li>Visually appealing layout with interactive hover effects.</li>
+                            <li>Integrated fake API for mock product data.</li>
+                        </ul>
+                        <button onclick="closeModal('ecommerce')"
+                            class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                            Close
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="py-12">
+            <h2 class="text-2xl font-semibold">Skills</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Languages, frameworks, tools and soft skills.</p>
+
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">Languages</h4>
+                    <ul class="mt-3 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>C++</li>
+                    </ul>
+                </div>
+                <div class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">Frameworks & Libraries</h4>
+                    <ul class="mt-3 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                        <li>React</li>
+                        <li>TailwindCSS</li>
+                        <li>Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">Tools & Soft Skills</h4>
+                    <ul class="mt-3 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                        <li>Git, GitHub, VS Code</li>
+                        <li>Figma, Canva, Adobe XD</li>
+                        <li>Creativity, Problem Solving, Communication, Team Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-2">
+                    <h2 class="text-2xl font-semibold">About Me</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-3">I’m a passionate developer and designer who
+                        loves creating visually consistent, user-centered web solutions. Currently pursuing B.Tech in
+                        Computer Science and Engineering (graduating 2027).</p>
+
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-lg border border-gray-100 dark:border-gray-800">
+                            <h4 class="font-semibold">Interests</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">UI/UX, accessibility, motion
+                                design, and creative side projects.</p>
+                        </div>
+                        <div class="p-4 rounded-lg border border-gray-100 dark:border-gray-800">
+                            <h4 class="font-semibold">Learning Journey & Goals</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Improving full-stack skills,
+                                mastering React & performance, and building polished design systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <a href="assets/My_Resume.pdf"
+                            class="px-4 py-2 rounded-md border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+                            target="_blank">
+                            My Resume (PDF)
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <aside class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">Quick Info</h4>
+                    <ul class="mt-3 text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li><strong>Location:</strong> India</li>
+                        <li><strong>Availability:</strong> Open to internships & freelance</li>
+                        <li><strong>Email:</strong> <a href="mailto:sakshishera4747@gmail.com"
+                                class="underline">sakshishera4747@gmail.com</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="py-12">
+            <h2 class="text-2xl font-semibold">Testimonials</h2>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <blockquote class="p-5 rounded-lg border border-gray-100 dark:border-gray-800 italic">"Sakshi has a
+                    great eye for detail and delivers polished UI in tight deadlines. A reliable team player."<footer
+                        class="mt-3 text-sm not-italic">— Teammate</footer>
+                </blockquote>
+                <blockquote class="p-5 rounded-lg border border-gray-100 dark:border-gray-800 italic">"Her design
+                    process is thoughtful and user-centered — the prototypes were easy to use and validate."<footer
+                        class="mt-3 text-sm not-italic">— Mentor</footer>
+                </blockquote>
+                <blockquote class="p-5 rounded-lg border border-gray-100 dark:border-gray-800 italic">"Quick learner and
+                    proactive communicator; pleasure to collaborate with."<footer class="mt-3 text-sm not-italic">—
+                        Project Lead</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Blog / Insights -->
+        <section id="blog" class="py-12">
+            <h2 class="text-2xl font-semibold">Blog & Insights</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Short posts about web design, UI/UX, and front-end
+                development.</p>
+
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">Design systems: where to start</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Notes on building reusable components and
+                        consistent styles.</p>
+                </article>
+                <article class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">Accessible forms — best practices</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">How to design inclusive contact flows and
+                        validation.</p>
+                </article>
+                <article class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">From prototype to production</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Tools and steps I use to ship designs as
+                        working interfaces.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-2xl font-semibold">Let’s Connect</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Fill the form or reach out via email — I
+                        usually reply within a few days.</p>
+
+                    <form id="contactForm" class="mt-6 space-y-4 bg-transparent">
+                        <div>
+                            <label class="sr-only" for="name">Name</label>
+                            <input id="name" name="name" required placeholder="Your name"
+                                class="w-full rounded-md border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+                        </div>
+                        <div>
+                            <label class="sr-only" for="email">Email</label>
+                            <input id="email" name="email" type="email" required placeholder="Email"
+                                class="w-full rounded-md border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+                        </div>
+                        <div>
+                            <label class="sr-only" for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Message"
+                                class="w-full rounded-md border border-gray-200 dark:border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="px-5 py-3 rounded-md bg-primary text-white hover:brightness-95">Send
+                                Message</button>
+                        </div>
+                    </form>
+                </div>
+
+                <aside class="p-5 rounded-lg border border-gray-100 dark:border-gray-800">
+                    <h4 class="font-semibold">Contact Info</h4>
+                    <ul class="mt-3 text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li><strong>Email:</strong> <a href="mailto:sakshishera4747@gmail.com"
+                                class="underline">sakshishera4747@gmail.com</a></li>
+                        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sakshi-shekhar-5a7983271/"
+                                target="_blank" rel="noreferrer"
+                                class="underline">linkedin.com/in/sakshi-shekhar-5a7983271/</a></li>
+                        <li><strong>GitHub:</strong> <a href="https://github.com/sakshi474prog" target="_blank"
+                                rel="noreferrer" class="underline">github.com/sakshi474prog</a></li>
+                        <li><strong>Calendly:</strong> <a href="#" class="underline">(optional link)</a></li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 dark:border-gray-800 mt-12">
+        <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm">© <span id="year"></span> Sakshi Shekhar. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/sakshi474prog" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/sakshi-shekhar-5a7983271/" target="_blank"
+                    rel="noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button id="scrollTop" title="Scroll to top"
+        class="hidden fixed right-6 bottom-6 p-3 rounded-full shadow-lg bg-primary text-white z-50">↑</button>
+
+    <!-- Scripts -->
+    <script>
+        // year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const root = document.documentElement;
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = stored ? stored === 'dark' : prefersDark;
+        if (isDark) document.documentElement.classList.add('dark');
+        function updateIcon() {
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.innerHTML = '<path d="M10 2a.75.75 0 01.75.75V4a.75.75 0 01-1.5 0V2.75A.75.75 0 0110 2zM10 16a.75.75 0 01.75.75V18a.75.75 0 01-1.5 0v-1.25A.75.75 0 0110 16zM4.22 4.22a.75.75 0 011.06 0l.887.887a.75.75 0 11-1.06 1.06L4.22 5.28a.75.75 0 010-1.06zM14.83 14.83a.75.75 0 011.06 0l.887.887a.75.75 0 11-1.06 1.06l-.887-.887a.75.75 0 010-1.06zM2 10a.75.75 0 01.75-.75H4a.75.75 0 010 1.5H2.75A.75.75 0 012 10zM16 10a.75.75 0 01.75-.75H18a.75.75 0 010 1.5h-1.25A.75.75 0 0116 10zM4.22 15.78a.75.75 0 010-1.06l.887-.887a.75.75 0 111.06 1.06l-.887.887a.75.75 0 01-1.06 0zM14.83 5.17a.75.75 0 010-1.06l.887-.887a.75.75 0 111.06 1.06l-.887.887a.75.75 0 01-1.06 0z"/>'
+            } else {
+                themeIcon.innerHTML = '<path fill="currentColor" d="M10 2a8 8 0 100 16 8 8 0 000-16z"/>'
+            }
+        }
+        updateIcon();
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const nowDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+            updateIcon();
+        });
+
+        function openModal(type) {
+    document.getElementById(`modal-${type}`).classList.remove('hidden');
+  }
+  function closeModal(type) {
+    document.getElementById(`modal-${type}`).classList.add('hidden');
+  }
+
+        // mobile nav
+        const mobileNavBtn = document.getElementById('mobileNavBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNavBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // scroll to top
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) scrollTop.classList.remove('hidden'); else scrollTop.classList.add('hidden');
+        });
+        scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // simple form handler (placeholder)
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // basic validation + pretend submission
+            const btn = contactForm.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = 'Send Message';
+                alert('Thanks! Your message was received (demo).');
+                contactForm.reset();
+            }, 900);
+        });
+
+        // keyboard accessibility: focus outlines
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'Tab') document.body.classList.add('user-is-tabbing');
+        });
+    </script>
+</body>
+
+</html>
